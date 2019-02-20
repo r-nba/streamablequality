@@ -3,9 +3,12 @@ import urllib
 import requests
 import json
 import time
+import config
 
-
-reddit = praw.Reddit(user_agent='streamable quality checker')
+print(config.client_id)
+reddit = praw.Reddit(client_id=config.client_id, 
+    client_secret=config.client_secret, password=config.password, 
+    user_agent='streamable quality checker', username=config.username)
 streamableAPI = 'https://api.streamable.com/videos/'
 seen = []
 

@@ -1,5 +1,4 @@
 import praw
-import urllib
 import requests
 import json
 import time
@@ -31,8 +30,8 @@ while(True):
                 streamableCode = post.url.replace('https://streamable.com/', '')
                 streamableCode = streamableCode.replace('http://streamable.com/', '')
                 url = streamableAPI + streamableCode
-                rawJSON = urllib.request.urlopen(url).read()
-                streamableJSON = json.loads(rawJSON.decode('utf-8'))
+                #changed to a requests call here 
+                streamableJSON = requests.get(url).json()
 
                 framerate = str(streamableJSON['files']['mp4']['framerate'])
                 bitrate = str(streamableJSON['files']['mp4']['bitrate'])
